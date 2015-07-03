@@ -1,0 +1,7 @@
+- hosts: proxy-out
+  sudo: yes
+  roles:
+#    - role: ntp
+    - role: common
+    - role: ansible-dnsmasq
+    - role: debug

@@ -1,0 +1,5 @@
+---
+dnsmasq_pkg_state: 'installed'
+dnsmasq_service_state: 'started'
+dnsmasq_service_enabled: 'yes'
+

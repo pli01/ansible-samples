@@ -1,0 +1,2 @@
+[proxy-out]
+localhost ansible_connection=local

@@ -1,0 +1,5 @@
+---
+dnsmasq_service_name: dnsmasq
+dnsmasq_config_file: /etc/dnsmasq.conf
+dnsmasq_config_dir: /etc/dnsmasq.d
+

@@ -1,0 +1,41 @@
+---
+- name: Add the OS specific variables
+  include_vars: '{{ ansible_os_family }}.yml'
+  tags: [ 'configuration', 'package', 'service', 'dnsmasq' ]
+
+- name: Install the required packages in Redhat derivatives
+  yum: name=dnsmasq state={{ dnsmasq_pkg_state }}
+  when: ansible_os_family == 'RedHat'
+  tags: [ 'package', 'dnsmasq' ]
+
+- name: Install the required packages in Debian derivatives
+  apt: name=dnsmasq state={{ dnsmasq_pkg_state }}
+  when: ansible_os_family == 'Debian'
+  tags: [ 'package', 'dnsmasq' ]
+
+- name: ensure {{ dnsmasq_config_dir }}/other.conf exists
+  file: path={{ dnsmasq_config_dir }}/other.conf state=touch
+  sudo: yes
+
+- name: ensure {{ dnsmasq_config_dir }}/strict-order.conf exists
+  file: path={{ dnsmasq_config_dir }}/strict-order.conf state=touch
+  sudo: yes
+
+- name: dnsmasq other
+  sudo: yes
+  lineinfile: destfile={{ dnsmasq_config_dir }}/other.conf regexp="^#other" line="#other" state=present
+  notify:
+  - restart dnsmasq
+  tags: [ 'configuration', 'package', 'dnsmasq' ]
+
+- name: dnsmasq strict order
+  sudo: yes
+  lineinfile: destfile={{ dnsmasq_config_dir }}/strict-order.conf regexp="^strict-order" line="strict-order" state=present
+  notify:
+  - restart dnsmasq
+  tags: [ 'configuration', 'package', 'dnsmasq' ]
+
+
+- name: Start/stop dnsmasq service
+  service: name={{ dnsmasq_service_name }} state={{ dnsmasq_service_state }} enabled={{ dnsmasq_service_enabled }} pattern='/dnsmasqd'
+  tags: [ 'service', 'dnsmasq' ]
