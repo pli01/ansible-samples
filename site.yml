@@ -2,6 +2,6 @@
   sudo: yes
   roles:
 #    - role: ntp
+#    - role: ansible-dnsmasq
     - role: common
-    - role: ansible-dnsmasq
     - role: debug
