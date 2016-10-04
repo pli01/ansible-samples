@@ -1,11 +1,20 @@
 #!/usr/bin/ansible-playbook -i 'localhost,' -c local
 #
 # Usage
-#  ./get_package.yml -e user=jenkins -e url=https://github.com/pli01/docker-samples/archive/master.zip  -e dest=docker-samples-master '{ post_cmd: ["ansible -i localhost, -c local localhost -m setup"] }' 
+#  ./get_package.yml -e vars_file=vars.yml
+#   with vars.yml
+#     user: jenkins
+#     url: https://github.com/pli01/docker-samples/archive/master.zip
+#     dest: docker-samples-master
+#     post_cmd: ["ansible -i localhost, -c local localhost -m setup"] 
+#
+#  ./get_package.yml -e user=jenkins -e url=https://github.com/pli01/docker-samples/archive/master.zip -e dest=docker-samples-master -e '{ post_cmd: ["make""] }' 
 #
 - hosts: localhost
   become: true
   become_user: "{{ user }}"
+  vars_files:
+   - "{{ vars_file }}"
   vars:
     user: ''
     url: ''
