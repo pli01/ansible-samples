@@ -1,0 +1,44 @@
+- project:
+    name: playbook
+    distrib:
+      - debian
+    target:
+      - debian-ansible2:
+          previous: 'debian'
+      - java:
+          previous: 'debian-ansible2'
+      - debian-jenkins2:
+          previous: 'java'
+    jobs:
+      - build-{name}-{distrib}
+
+- job-template:
+    name: 'build-{name}-{distrib}'
+    scm:
+      - ansible-samples
+    wrappers:
+      - ansicolor
+      - timestamps
+    builders:
+      - include-vars
+      - ansible-playbook-run
+
+- scm:
+    name: ansible-samples
+    scm:
+      - git:
+         url: https://github.com/pli01/ansible-samples
+         branches:
+          - origin/master
+
+- builder:
+    name: include-vars
+    builders:
+      - shell:
+          !include-raw: scripts/include-vars.sh
+
+- builder:
+    name: ansible-playbook-run
+    builders:
+      - shell:
+          !include-raw: scripts/ansible-playbook-run.sh
