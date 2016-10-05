@@ -1,5 +1,5 @@
 ---
-    - name: Create debug
-      template:
-        src: dump_variables
-        dest: "/tmp/{{inventory_hostname}}_ansible_variables"
+- name: Create debug
+  template:
+    src: dump_variables
+    dest: "/tmp/{{inventory_hostname}}_ansible_variables"

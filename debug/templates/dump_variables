@@ -1,7 +1,16 @@
-HOSTVARS (ANSIBLE GATHERED, group_vars, host_vars) :
+Module Variables ("vars"):
+--------------------------------
+{{ hostvars[inventory_hostname] | to_nice_yaml }}
 
-{{ hostvars[inventory_hostname] | to_yaml }}
+Environment Variables ("environment"):
+--------------------------------
+{{ environment | to_nice_yaml }} 
 
-PLAYBOOK VARS:
+GROUP NAMES Variables ("group_names"):
+--------------------------------
+{{ group_names | to_nice_yaml }}
 
-{{ vars | to_yaml }}
+GROUPS Variables ("groups"):
+--------------------------------
+{{ groups | to_nice_yaml }}
+

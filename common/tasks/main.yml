@@ -4,8 +4,8 @@
 
     - name: update apt cache
       apt: update_cache=yes cache_valid_time=3600
-      sudo: yes
+      become: yes
 
     - name: upgrade the distro
       apt: upgrade=dist
-      sudo: yes
+      become: yes
