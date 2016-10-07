@@ -71,9 +71,9 @@
          when: post_cmd
          register: post_cmd_out
 
-       - name: "Output debug post_cmd_out"
-         debug: var=post_cmd_out.results[0].stdout_lines
-
+#       - name: "Output debug post_cmd_out"
+#         debug: var=post_cmd_out.results[0].stdout_lines
+#
       rescue:
        - name: "Error message post_cmd_out"
          debug: msg='{{ post_cmd_out }}'
@@ -81,11 +81,16 @@
       always: 
        - name: "Cleanup temp dir {{ tempdir }}"
          file: { name: "{{ tempdir }}", state: absent }
-       - debug: var=post_cmd_out.results[0].stderr
-         failed_when: post_cmd_out.results[0].rc > 0
-         when: post_cmd_out.results[0].rc > 0
-
-- hosts: localhost
+#       - debug: var=post_cmd_out.results[0].stderr
+#         failed_when: post_cmd_out.results[0].rc > 0
+#         when: post_cmd_out.results[0].rc > 0
+#
+- name: "Aggregate Log"
+  hosts: localhost
   tasks:
     - shell: "echo '{{ post_cmd_out.results[0].stdout | to_nice_json }}' > output.log"
+      when: post_cmd_out.results[0].stdout
+    - shell: "echo '{{ post_cmd_out.results[0].stderr | to_nice_json }}' > output.err"
+      when: post_cmd_out.results[0].stderr
     - shell: "echo '{{ post_cmd_out | to_nice_json }}' > output.json"
+      when: post_cmd_out
