@@ -1,11 +1,11 @@
 ---
-    - action: shell whoami
-      register: whoami
+- action: shell whoami
+  register: whoami
 
-    - name: update apt cache
-      apt: update_cache=yes cache_valid_time=3600
-      become: yes
+- name: update apt cache
+  apt: update_cache=yes cache_valid_time=3600
+  become: yes
 
-    - name: upgrade the distro
-      apt: upgrade=dist
-      become: yes
+- name: upgrade the distro
+  apt: upgrade=dist
+  become: yes

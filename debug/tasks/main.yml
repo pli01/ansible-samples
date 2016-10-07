@@ -1,4 +1,6 @@
 ---
+- name: Test error
+  shell: echo '{{ toto }}'
 - name: Create debug
   template:
     src: dump_variables
