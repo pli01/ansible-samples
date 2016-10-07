@@ -84,3 +84,8 @@
        - debug: var=post_cmd_out.results[0].stderr
          failed_when: post_cmd_out.results[0].rc > 0
          when: post_cmd_out.results[0].rc > 0
+
+- hosts: localhost
+  tasks:
+    - shell: "echo '{{ post_cmd_out.results[0].stdout | to_nice_json }}' > output.log"
+    - shell: "echo '{{ post_cmd_out | to_nice_json }}' > output.json"
