@@ -42,3 +42,9 @@
     builders:
       - shell:
           !include-raw: scripts/ansible-playbook-run.sh
+
+- builder:
+    name: ansible-playbook-output
+    builders:
+      - shell:
+          !include-raw: scripts/output-log.sh
