@@ -20,7 +20,7 @@
       - ansicolor
       - timestamps
     builders:
-      - include-vars
+      - ansible-playbook-generate-vars-file
       - ansible-playbook-run
       - ansible-playbook-output
 
@@ -33,10 +33,10 @@
           - origin/master
 
 - builder:
-    name: include-vars
+    name: ansible-playbook-generate-vars-file
     builders:
       - shell:
-          !include-raw: scripts/include-vars.sh
+          !include-raw: scripts/ansible-playbook-generate-vars-file.sh
 
 - builder:
     name: ansible-playbook-run
@@ -48,4 +48,4 @@
     name: ansible-playbook-output
     builders:
       - shell:
-          !include-raw: scripts/output-log.sh
+          !include-raw: scripts/ansible-playbook-output-log.sh

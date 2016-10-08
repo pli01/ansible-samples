@@ -88,9 +88,9 @@
 - name: "Aggregate Log"
   hosts: localhost
   tasks:
-    - shell: "echo '{{ post_cmd_out.results[0].stdout | to_nice_json }}' > output.log"
+    - copy: content='{{ post_cmd_out.results[0].stdout }}' dest=./output.stdout
       when: post_cmd_out.results[0].stdout
-    - shell: "echo '{{ post_cmd_out.results[0].stderr | to_nice_json }}' > output.err"
+    - copy: content='{{ post_cmd_out.results[0].stderr }}' dest=./output.stderr
       when: post_cmd_out.results[0].stderr
-    - shell: "echo '{{ post_cmd_out | to_nice_json }}' > output.json"
+    - copy: content='{{ post_cmd_out }}' dest=./output.json
       when: post_cmd_out
