@@ -5,5 +5,5 @@ user: a
 url: https://github.com/pli01/ansible-samples/archive/master.zip
 dest: ansible-samples-master
 pre_cmd: []
-post_cmd: ["( export PYTHONUNBUFFERED=$PYTHONUNBUFFERED ; cd ansible-samples-master && stdbuf -oL -eL ansible-playbook -i hosts -c local site.yml -e myvar='' -v )"]
+post_cmd: ["( export PYTHONUNBUFFERED=$PYTHONUNBUFFERED ; cd ansible-samples-master && make deploy)"]
 EOF

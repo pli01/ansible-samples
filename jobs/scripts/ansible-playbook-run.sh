@@ -1,4 +1,4 @@
-#!/usr/bin/python -u /usr/bin/ansible-playbook -i 'localhost,' -c local -e vars_file=$WORKSPACE/vars_file.yml
+#!/usr/bin/ansible-playbook -i 'localhost,' -c local -e vars_file=$WORKSPACE/vars_file.yml
 #
 # Usage
 #  ./get_package.yml -e vars_file=vars.yml
