@@ -1,4 +1,0 @@
-user: jenkins
-url: https://github.com/pli01/docker-samples/archive/master.zip
-dest: docker-samples-master
-post_cmd: ["ansible -i localhost, -c local localhost -m setup"]
