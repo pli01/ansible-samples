@@ -14,6 +14,11 @@
 
 - job-template:
     name: 'build-{name}-{distrib}'
+    parameters:
+      - string:
+          name: PYTHONUNBUFFERED
+          default: '1'
+          description: "A parameter named PYTHONUNBUFFERED, defaults to '1'."
     scm:
       - ansible-samples
     wrappers:
