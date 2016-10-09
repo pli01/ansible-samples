@@ -26,9 +26,9 @@
       - timestamps
     builders:
       - ansible-playbook-generate-vars-file
-#      - ansible-playbook-run
-#      - ansible-playbook-output
-      - ansible-playbook
+      - ansible-playbook-run
+      - ansible-playbook-output
+#      - ansible-playbook
 
 - scm:
     name: ansible-samples

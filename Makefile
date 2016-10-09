@@ -5,4 +5,4 @@ list-tasks:
 syntax-check:
 	ansible-playbook -i hosts -c local site.yml -e myvar='' --syntax-check
 deploy: list-hosts list-tasks syntax-check
-	 export PYTHONUNBUFFERED=1 ; stdbuf -e0 -o0 ansible-playbook -i hosts site.yml -c ssh -e myvar='' -vv
+	 export PYTHONUNBUFFERED=1 ; stdbuf -e0 -o0 ansible-playbook -i hosts site.yml -c local -e myvar='' -vv
