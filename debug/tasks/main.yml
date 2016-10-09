@@ -1,13 +1,10 @@
 ---
 - name: Test display myvar
   shell: echo '{{ myvar }}'
-- name: Test display myvar
+- name: Test sleep
   shell: sleep '{{ item }}'
   with_items:
     - 10
-    - 20
-    - 30
-
 - name: Create debug
   template:
     src: dump_variables

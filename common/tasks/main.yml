@@ -1,5 +1,5 @@
 ---
-- action: shell whoami
+- shell: whoami
   register: whoami
 
 - name: update apt cache
