@@ -1,7 +1,7 @@
 ---
-- name: Test error
-  shell: echo '{{ toto }}'
+- name: Test display myvar
+  shell: echo '{{ myvar }}'
 - name: Create debug
   template:
     src: dump_variables
-    dest: "/tmp/{{inventory_hostname}}_ansible_variables"
+    dest: "{{inventory_hostname}}_ansible_variables"
