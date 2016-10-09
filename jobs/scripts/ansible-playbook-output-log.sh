@@ -2,8 +2,16 @@
 STDOUT=output.stdout
 STDERR=output.stderr
 
-test -f $STDERR && cat $STDERR
-test -f $STDOUT && cat $STDOUT
+if [ -f $STDERR ] ;then
+ echo "########### STDERR ###########"
+ cat $STDERR
+ echo ""
+fi
+if [ -f $STDOUT ] ;then
+ echo "########### STDOUT ###########"
+ cat $STDOUT
+ echo ""
+fi
 
 echo ""
 
@@ -11,4 +19,3 @@ cat $STDOUT \
   | grep -q "unreachable=0.*failed=0"  \
   && (echo 'Success' && exit 0) \
   || (echo 'Failed' && exit 1)
-

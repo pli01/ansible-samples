@@ -92,5 +92,5 @@
       when: post_cmd_out.results[0].stdout
     - copy: content='{{ post_cmd_out.results[0].stderr }}' dest=./output.stderr
       when: post_cmd_out.results[0].stderr
-    - copy: content='{{ post_cmd_out }}' dest=./output.json
+    - copy: content='{{ post_cmd_out | to_nice_json }}' dest=./output.json
       when: post_cmd_out
