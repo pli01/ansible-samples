@@ -26,8 +26,10 @@
       - timestamps
     builders:
       - ansible-playbook-generate-vars-file
-      - ansible-playbook-run
-      - ansible-playbook-output
+      - ansible-playbook-generate-shell
+      - run-sudo
+#      - ansible-playbook-run
+#      - ansible-playbook-output
 #      - ansible-playbook
 
 - scm:
@@ -61,3 +63,15 @@
     builders:
       - shell:
           !include-raw: scripts/ansible-playbook.sh
+
+- builder:
+    name: ansible-playbook-generate-shell
+    builders:
+      - shell:
+          !include-raw: scripts/ansible-playbook-generate-shell.sh
+
+- builder:
+    name: run-sudo
+    builders:
+      - shell:
+          !include-raw: scripts/run-sudo.sh
