@@ -1,4 +1,5 @@
 #!/bin/bash -ex
+env
 cat > vars_file.yml <<EOF
 ---
 user: a

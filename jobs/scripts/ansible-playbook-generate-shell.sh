@@ -1,9 +1,10 @@
-#!/usr/bin/ansible-playbook -i 'localhost,' -c local -e vars_file=$WORKSPACE/vars_file.yml
+#!/usr/bin/ansible-playbook -i 'localhost,' -c local -e vars_file=$WORKSPACE/vars_file.yml -vv
 - hosts: localhost
   vars_files:
     - "{{ vars_file }}"
   vars:
-    run_shell: ./output.sh
+    job_name: "{{ lookup('env','JOB_NAME') | default('output.sh') }}"
+    run_shell: "./{{ job_name }}"
   tasks:
     - name: "Prepare {{ run_shell }}"
       copy: content='#!/bin/bash' dest="{{ run_shell }}"
