@@ -1,11 +1,13 @@
 ---
 - name: Test display myvar
   shell: echo '{{ myvar }}'
+  changed_when: False
 - name: Test sleep
   shell: sleep '{{ item }}'
   with_items:
-    - 10
+    - 2
+  changed_when: False
 - name: Create debug
   template:
     src: dump_variables
-    dest: "./{{inventory_hostname}}_ansible_variables"
+    dest: "/tmp/{{inventory_hostname}}_ansible_variables"

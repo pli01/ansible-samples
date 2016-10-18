@@ -1,5 +1,6 @@
 Module Variables ("vars"):
 --------------------------------
+{{ hostvars[inventory_hostname] | to_nice_yaml }}
 
 Environment Variables ("environment"):
 --------------------------------

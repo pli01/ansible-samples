@@ -1,0 +1,2 @@
+before_install:
+	docker images $(IMAGE_NAME)
